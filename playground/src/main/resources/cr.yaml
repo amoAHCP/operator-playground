@@ -1,0 +1,6 @@
+apiVersion: kop.jacpfx.org/v1alpha1
+kind: App
+metadata:
+  name: example-app
+spec:
+  replicas: 5
