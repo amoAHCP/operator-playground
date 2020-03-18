@@ -43,19 +43,23 @@ public class PodSetController {
     }
 
     public void create() {
-        podSetInformer.addEventHandler(new ResourceEventHandler<PodSet>() {
+        podSetInformer.addEventHandler(new ResourceEventHandler<>() {
             @Override
             public void onAdd(PodSet podSet) {
+                logger.log(Level.INFO, "onAdd " + podSet.toString());
                 enqueuePodSet(podSet);
             }
 
             @Override
             public void onUpdate(PodSet podSet, PodSet newPodSet) {
+                logger.log(Level.INFO, "onUpdate " + podSet.toString());
                 enqueuePodSet(newPodSet);
             }
 
             @Override
-            public void onDelete(PodSet podSet, boolean b) { }
+            public void onDelete(PodSet podSet, boolean b) {
+                logger.log(Level.INFO, "onDelete " + podSet.toString());
+            }
         });
 
         podInformer.addEventHandler(new ResourceEventHandler<Pod>() {
@@ -176,7 +180,7 @@ public class PodSetController {
     }
 
     private void enqueuePodSet(PodSet podSet) {
-        logger.log(Level.INFO, "enqueuePodSet(" + podSet.getMetadata().getName() + ")");
+        logger.log(Level.INFO, "enqueuePodSet(" + podSet.toString() + ")");
         String key = Cache.metaNamespaceKeyFunc(podSet);
         logger.log(Level.INFO, "Going to enqueue key " + key);
         if (key != null || !key.isEmpty()) {
@@ -186,6 +190,7 @@ public class PodSetController {
     }
 
     private Pod createNewPod(PodSet podSet) {
+        logger.log(Level.INFO,">>>> "+podSet.toString());
         return new PodBuilder()
                 .withNewMetadata()
                 .withGenerateName(podSet.getMetadata().getName() + "-pod")

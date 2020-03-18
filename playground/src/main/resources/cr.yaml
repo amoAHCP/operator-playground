@@ -3,4 +3,7 @@ kind: App
 metadata:
   name: example-app
 spec:
+  containers:
+  - name: nginx
+    image: nginx
   replicas: 5

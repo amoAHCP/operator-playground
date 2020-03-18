@@ -18,8 +18,8 @@ import org.jacpfx.operator.crd.PodSetList;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class PodSetOperatorMain {
-    public static Logger logger = Logger.getLogger(PodSetOperatorMain.class.getName());
+public class KpodOperatorMain {
+    public static Logger logger = Logger.getLogger(KpodOperatorMain.class.getName());
 
     public static void main(String args[]) {
         try (KubernetesClient client = new DefaultKubernetesClient()) {

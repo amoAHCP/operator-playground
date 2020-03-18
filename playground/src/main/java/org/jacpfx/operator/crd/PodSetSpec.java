@@ -1,7 +1,10 @@
 package org.jacpfx.operator.crd;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import io.fabric8.kubernetes.api.model.Container;
 import io.fabric8.kubernetes.api.model.KubernetesResource;
+
+import java.util.List;
 
 /*
  */
@@ -13,9 +16,22 @@ public class PodSetSpec implements KubernetesResource {
         return replicas;
     }
 
+    public List<Container> containers;
+
+    public List<Container> getContainers() {
+        return containers;
+    }
+
+    public void setContainers(List<Container> containers) {
+        this.containers = containers;
+    }
+
     @Override
     public String toString() {
-        return "PodSetSpec{replicas=" + replicas + "}";
+        return "PodSetSpec{" +
+                "containers=" + containers +
+                ", replicas=" + replicas +
+                '}';
     }
 
     public void setReplicas(int replicas) {
