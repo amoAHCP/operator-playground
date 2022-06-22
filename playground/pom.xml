@@ -8,7 +8,7 @@
   <name>playground</name>
   <url>http://maven.apache.org</url>
   <properties>
-    <version.fabric8.client>4.7.1</version.fabric8.client>
+    <version.fabric8.client>4.7.2</version.fabric8.client>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
   </properties>
